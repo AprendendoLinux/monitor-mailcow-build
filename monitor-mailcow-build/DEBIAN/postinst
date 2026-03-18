@@ -1,0 +1,17 @@
+#!/bin/bash
+set -e
+
+# Só aplica o chmod se o arquivo existir
+if [ -f /etc/mailcow-monitor/mailcow-monitor.conf ]; then
+    chmod 600 /etc/mailcow-monitor/mailcow-monitor.conf
+fi
+
+# Garante a criação e permissão do log
+touch /var/log/monitor-mailcow.log
+chmod 644 /var/log/monitor-mailcow.log
+
+# Reinicia o serviço
+systemctl daemon-reload
+systemctl enable mailcow-monitor.service
+systemctl restart mailcow-monitor.service || true
+exit 0

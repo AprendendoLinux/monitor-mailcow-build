@@ -1,0 +1,13 @@
+#!/bin/bash
+set -e
+
+# O dpkg passa o argumento "remove" quando o pacote está sendo desinstalado
+if [ "$1" = "remove" ]; then
+    echo "Parando o daemon do monitor-mailcow..."
+    systemctl stop mailcow-monitor.service || true
+    
+    echo "Desabilitando a inicialização automática..."
+    systemctl disable mailcow-monitor.service || true
+fi
+
+exit 0

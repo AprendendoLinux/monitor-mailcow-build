@@ -1,0 +1,8 @@
+Package: monitor-mailcow
+Version: 1.0.0
+Architecture: all
+Maintainer: Henrique Tec <henrique@henrique.tec.br>
+Depends: python3, git
+Description: Daemon de monitoramento critico de atualizacoes do Mailcow.
+ Envia alertas por E-mail (SMTP) e Telegram quando uma nova release
+ oficial for detectada no GitHub.
