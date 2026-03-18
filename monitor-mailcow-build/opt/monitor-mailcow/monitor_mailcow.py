@@ -110,12 +110,8 @@ def enviar_telegram(versao_atual, versao_nova):
 def enviar_email(versao_atual, dados_nova):
     versao_nova = dados_nova["versao"]
     notas_lancamento = dados_nova["notas"]
-    destinatarios = [email.strip() for email in RECIPIENT_EMAILS.split(",")]
-    
-    msg = MIMEMultipart("alternative")
-    msg["Subject"] = f"CRÍTICO: Atualização Pendente no Servidor Mailcow ({versao_nova})"
-    msg["From"] = formataddr((SENDER_NAME, SENDER_EMAIL))
-    msg["To"] = ", ".join(destinatarios)
+    # Limpa a lista e remove itens vazios caso haja vírgulas sobrando
+    destinatarios = [email.strip() for email in RECIPIENT_EMAILS.split(",") if email.strip()]
 
     html = f"""\
     <!DOCTYPE html>
@@ -165,7 +161,6 @@ def enviar_email(versao_atual, dados_nova):
       </body>
     </html>
     """
-    msg.attach(MIMEText(html, "html", "utf-8"))
 
     try:
         logging.info(f"Conectando ao SMTP ({SMTP_SERVER}:{SMTP_PORT})...")
@@ -182,12 +177,31 @@ def enviar_email(versao_atual, dados_nova):
             
         with server:
             server.login(SMTP_USER, SMTP_PASS)
-            server.sendmail(SENDER_EMAIL, destinatarios, msg.as_string())
             
-        logging.info("E-mail enviado com sucesso.")
-        return True 
+            # Novo Loop: Monta e envia a mensagem para cada destinatário individualmente
+            falhas = 0
+            for destinatario in destinatarios:
+                msg = MIMEMultipart("alternative")
+                msg["Subject"] = f"CRÍTICO: Atualização Pendente no Servidor Mailcow ({versao_nova})"
+                msg["From"] = formataddr((SENDER_NAME, SENDER_EMAIL))
+                msg["To"] = destinatario
+                msg.attach(MIMEText(html, "html", "utf-8"))
+
+                try:
+                    server.sendmail(SENDER_EMAIL, destinatario, msg.as_string())
+                    logging.info(f"E-mail entregue com sucesso para: {destinatario}")
+                except Exception as e_envio:
+                    logging.error(f"Erro ao enviar para {destinatario}: {e_envio}")
+                    falhas += 1
+            
+            # Se a quantidade de falhas for menor que o total de destinatários, consideramos sucesso
+            if falhas < len(destinatarios):
+                return True
+            else:
+                return False
+
     except Exception as e:
-        logging.error(f"Falha SMTP: {e}")
+        logging.error(f"Falha de conexão SMTP: {e}")
         return False
 
 def check_mailcow_updates():
