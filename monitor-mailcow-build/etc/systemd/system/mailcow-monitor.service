@@ -1,15 +1,23 @@
 [Unit]
 Description=Daemon de Monitoramento do Mailcow
-After=network.target
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 Type=simple
 User=root
 WorkingDirectory=/opt/monitor-mailcow
-ExecStart=/usr/bin/python3 /opt/monitor-mailcow/monitor_mailcow.py
-Restart=always
+ExecStart=/usr/bin/python3 -I /opt/monitor-mailcow/monitor_mailcow.py
+Restart=on-failure
 RestartSec=30
+RestartPreventExitStatus=78
 Environment=PYTHONUNBUFFERED=1
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=full
+ProtectKernelTunables=yes
+ProtectControlGroups=yes
 
 [Install]
 WantedBy=multi-user.target

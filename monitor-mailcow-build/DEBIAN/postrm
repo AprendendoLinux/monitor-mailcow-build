@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+
+[ -d /run/systemd/system ] && systemctl daemon-reload || true
+
+if [ "$1" = "purge" ]; then
+    rm -rf /var/lib/monitor-mailcow /opt/monitor-mailcow
+    rm -f /var/log/monitor-mailcow.log*
+    rmdir /etc/mailcow-monitor 2>/dev/null || true
+fi
+exit 0

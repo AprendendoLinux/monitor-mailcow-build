@@ -1,5 +1,5 @@
 Package: monitor-mailcow
-Version: 1.0.0
+Version: 1.1.1
 Architecture: all
 Maintainer: Henrique Tec <henrique@henrique.tec.br>
 Depends: python3, git
