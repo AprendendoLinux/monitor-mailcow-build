@@ -4,7 +4,7 @@
 
 ```bash
 sha256sum -c SHA256SUMS                      # confira o pacote baixado
-sudo dpkg -i monitor-mailcow_1.1.1_all.deb
+sudo dpkg -i monitor-mailcow_1.1.2_all.deb
 sudo nano /etc/mailcow-monitor/mailcow-monitor.conf
 sudo systemctl restart mailcow-monitor
 ```

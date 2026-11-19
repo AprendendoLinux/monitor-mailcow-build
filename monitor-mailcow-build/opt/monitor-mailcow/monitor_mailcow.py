@@ -17,7 +17,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.utils import formataddr
 
-VERSAO_APP = "1.1.1"
+VERSAO_APP = "1.1.2"
 EXIT_CONFIG = 78
 TIMEOUT_REDE = 30
 TIMEOUT_CHECK = 300

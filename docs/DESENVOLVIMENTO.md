@@ -14,7 +14,8 @@
     │   ├── mailcow-monitor/mailcow-monitor.conf
     │   ├── systemd/system/mailcow-monitor.service
     │   └── logrotate.d/monitor-mailcow
-    └── opt/monitor-mailcow/monitor_mailcow.py
+    ├── opt/monitor-mailcow/monitor_mailcow.py
+    └── usr/share/doc/monitor-mailcow/copyright   (DEP-5, licença MIT)
 ```
 
 ## Scripts do pacote
