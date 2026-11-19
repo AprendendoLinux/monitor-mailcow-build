@@ -130,5 +130,4 @@ gh release create v<versão> monitor-mailcow_<versão>_all.deb SHA256SUMS \
 
 * Reenvio periódico do alerta enquanto houver pendência (opcional).
 * Testes automatizados e CI.
-* Licença explícita.
 * Heartbeat/healthcheck do próprio daemon.

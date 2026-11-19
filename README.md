@@ -3,6 +3,7 @@
 ![versão](https://img.shields.io/badge/versão-1.1.1-blue)
 ![plataforma](https://img.shields.io/badge/Debian%20%2F%20Ubuntu-.deb-informational)
 ![python](https://img.shields.io/badge/Python-3%20(stdlib)-green)
+![licença](https://img.shields.io/badge/licença-MIT-yellow)
 
 Daemon para Debian/Ubuntu, escrito em Python (somente biblioteca padrão), que monitora o [Mailcow Dockerized](https://mailcow.email/) e avisa a equipe por **E-mail (HTML)** e **Telegram**:
 
@@ -86,7 +87,11 @@ O daemon **não repete** o alerta enquanto a atualização não é aplicada; só
 * Depende das frases `Updated code is available.` e `No updates available.` do `update.sh` do Mailcow. Se mudarem, o daemon registra `Saída inesperada` no log e não envia nada.
 * Não reenvia o alerta periodicamente enquanto a atualização estiver pendente.
 * O serviço roda como root (necessário para o `update.sh`); veja [docs/SEGURANCA.md](docs/SEGURANCA.md).
-* Sem testes automatizados no repositório e sem licença declarada.
+* Sem testes automatizados no repositório.
+
+## 📄 Licença
+
+Distribuído sob a licença [MIT](LICENSE).
 
 ---
 **Desenvolvido e mantido para ambientes corporativos de alta criticidade.** · v1.1.1
