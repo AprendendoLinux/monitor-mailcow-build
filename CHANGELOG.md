@@ -2,10 +2,11 @@
 
 Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
-## [Não lançado]
+## [1.1.2] - 2026-11-19
 
 ### Adicionado
-- Licença MIT.
+- Arquivo `/usr/share/doc/monitor-mailcow/copyright` no pacote Debian (formato DEP-5, licença MIT).
+- Licença MIT no repositório.
 
 ## [1.1.1] - 2026-11-19
 

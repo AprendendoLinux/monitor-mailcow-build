@@ -1,6 +1,6 @@
 # 🛡️ Monitor Crítico de Atualizações - Mailcow
 
-![versão](https://img.shields.io/badge/versão-1.1.1-blue)
+![versão](https://img.shields.io/badge/versão-1.1.2-blue)
 ![plataforma](https://img.shields.io/badge/Debian%20%2F%20Ubuntu-.deb-informational)
 ![python](https://img.shields.io/badge/Python-3%20(stdlib)-green)
 ![licença](https://img.shields.io/badge/licença-MIT-yellow)
@@ -28,7 +28,7 @@ Daemon para Debian/Ubuntu, escrito em Python (somente biblioteca padrão), que m
 sha256sum -c SHA256SUMS
 
 # 2. Instale
-sudo dpkg -i monitor-mailcow_1.1.1_all.deb
+sudo dpkg -i monitor-mailcow_1.1.2_all.deb
 
 # 3. Configure SMTP, destinatários e Telegram
 sudo nano /etc/mailcow-monitor/mailcow-monitor.conf
@@ -94,4 +94,4 @@ O daemon **não repete** o alerta enquanto a atualização não é aplicada; só
 Distribuído sob a licença [MIT](LICENSE).
 
 ---
-**Desenvolvido e mantido para ambientes corporativos de alta criticidade.** · v1.1.1
+**Desenvolvido e mantido para ambientes corporativos de alta criticidade.** · v1.1.2
